@@ -1,22 +1,8 @@
 import { useDispatch } from "react-redux";
-import { decrement, increment } from "../redux/counter/actions";
+import { decrement, increment, remove } from "../redux/counter/actions";
 
 function HooksCounter({ id, count }) {
-  //const count2 = useSelector((state) => state);
-  //console.log(count2);
-  //const count = useSelector((state) => state.count);
-  //console.log(id); // 1
-  //console.log(count); //0
-
   const dispatch = useDispatch();
-
-  const incrementHandler = (value) => {
-    dispatch(increment(value, id));
-  };
-
-  const decrementHandler = (value) => {
-    dispatch(decrement(value, id));
-  };
 
   return (
     <div className="p-4 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow">
@@ -24,15 +10,21 @@ function HooksCounter({ id, count }) {
       <div className="flex space-x-3">
         <button
           className="bg-indigo-400 text-white px-3 py-2 rounded shadow"
-          onClick={() => incrementHandler(5)}
+          onClick={() => dispatch(increment(count, id))}
         >
           Increment
         </button>
         <button
           className="bg-red-400 text-white px-3 py-2 rounded shadow"
-          onClick={() => decrementHandler(2)}
+          onClick={() => dispatch(decrement(count, id))}
         >
           Decrement
+        </button>
+        <button
+          className="bg-red-400 text-white px-3 py-2 rounded shadow"
+          onClick={() => dispatch(remove(id))}
+        >
+          Remove
         </button>
       </div>
     </div>

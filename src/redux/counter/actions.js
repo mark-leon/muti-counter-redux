@@ -1,7 +1,13 @@
-import { ADD_COUNTER, DECREMENT, INCREMENT, RESET } from "./actionTypes";
+import {
+  ADD_COUNTER,
+  DECREMENT,
+  INCREMENT,
+  REMOVE_COUNTER,
+  RESET,
+  TOTAL,
+} from "./actionTypes";
 
 export const increment = (value, id) => {
-  //console.log("actionTypes", id);
   return {
     type: INCREMENT,
     payload: value,
@@ -10,7 +16,6 @@ export const increment = (value, id) => {
 };
 
 export const decrement = (value, id) => {
-  //console.log("actionTypes", id);
   return {
     type: DECREMENT,
     payload: value,
@@ -27,5 +32,17 @@ export const reset = () => {
 export const addCounter = () => {
   return {
     type: ADD_COUNTER,
+  };
+};
+
+export const total = () => {
+  return {
+    type: TOTAL,
+  };
+};
+export const remove = (id) => {
+  return {
+    type: REMOVE_COUNTER,
+    id: id,
   };
 };

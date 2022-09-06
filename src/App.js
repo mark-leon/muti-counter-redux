@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import HooksCounter from "./components /HooksCounter";
-import { addCounter, reset } from "./redux/counter/actions";
+import { addCounter, reset, total } from "./redux/counter/actions";
 
 export default function App() {
   const state = useSelector((state) => state);
-  //console.log(typeof state);
+  const count = useSelector((state) => state.count);
   const dispatch = useDispatch();
 
   const addCounterHandler = () => {
@@ -35,6 +35,13 @@ export default function App() {
       >
         Reset
       </button>
+      <button
+        class="bg-indigo-400 text-white px-3 py-2 rounded shadow ml-6"
+        onClick={() => total()}
+      >
+        Total
+      </button>
+      <h1>{count}</h1>
     </div>
   );
 }
